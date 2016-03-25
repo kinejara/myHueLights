@@ -21,14 +21,14 @@ class SimpleHueSwitch:
 
   def __init__(self):
     self.bridge.connect()
-    
+
     if self.lightsOn() == True:
       self.bridge.set_light([1,2,3,5], 'on', False)
       print('OFF')
     else:
-      self.bridge.set_light([1,2,3,5], 'on', True)
-      self.bridge.set_light([1,2,3,5], 'xy', [0.3227,0.329])
-      self.bridge.set_light([1,2,3,5], 'bri', 160)
+      self.bridge.set_light([3,5], 'on', True)
+      self.bridge.set_light([3,5], 'bri', 50)
+
       print('ON')
 
 switch = SimpleHueSwitch()

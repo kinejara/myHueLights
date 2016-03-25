@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import subprocess
 from phue import Bridge
 
 class SimpleHueSwitch:
@@ -21,14 +22,18 @@ class SimpleHueSwitch:
 
   def __init__(self):
     self.bridge.connect()
-    
+
     if self.lightsOn() == True:
       self.bridge.set_light([1,2,3,5], 'on', False)
       print('OFF')
     else:
       self.bridge.set_light([1,2,3,5], 'on', True)
-      self.bridge.set_light([1,2,3,5], 'xy', [0.3227,0.329])
-      self.bridge.set_light([1,2,3,5], 'bri', 160)
+      self.bridge.set_light([1,2,3,5], 'xy', [0.139,0.081])
+      self.bridge.set_light([1,2], 'bri', 5)
+      self.bridge.set_light([3,5], 'bri', 100)
+
+      subprocess.call('/home/osmc/script/hyperionGamerMode.sh', shell=True)
+
       print('ON')
 
 switch = SimpleHueSwitch()
