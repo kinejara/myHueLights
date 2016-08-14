@@ -40,7 +40,7 @@ class SimpleHueSwitch:
       bridge.set_light([1,2], 'bri', 5)
       bridge.set_light([3,5], 'bri', 100)
 
-      subprocess.call('/home/osmc/script/hyperionGamerMode.sh', shell=True)
+      subprocess.call('hyperionGamerMode.sh', shell=True)
 
       print('ON')
 
