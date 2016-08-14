@@ -30,7 +30,7 @@ class SimpleHueSwitch:
     bridge.connect()
     lights = bridge.get_light_objects('id')
 
-    if self.lightsOn() == True:
+    if self.lightsOn(lights) == True:
       bridge.set_light([1,2,3,5], 'on', False)
       print('OFF')
     else:
