@@ -5,12 +5,13 @@ import subprocess
 from phue import Bridge
 
 class SimpleHueSwitch:
+  
   def getConfigs(self):
     with open('config.json') as data_file:    
       data = json.load(data_file)
     return data
-
- def lightsOn(self, lights):
+  
+  def lightsOn(self, lights):
     if lights[1].on == True:
       return True
     if lights[2].on == True:
