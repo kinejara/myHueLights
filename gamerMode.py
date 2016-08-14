@@ -26,6 +26,7 @@ class SimpleHueSwitch:
   def __init__(self):
     config = self.getConfigs()
     ip_bridge = config["ip_bridge"]
+    hyperionPath = config["hyperionPath"]
    
     bridge = Bridge(ip_bridge)
     bridge.connect()
@@ -39,8 +40,7 @@ class SimpleHueSwitch:
       bridge.set_light([1,2,3,5], 'xy', [0.139,0.081])
       bridge.set_light([1,2], 'bri', 5)
       bridge.set_light([3,5], 'bri', 100)
-
-      subprocess.call('hyperionGamerMode.sh', shell=True)
+      subprocess.call(hyperionPath, shell=True)
 
       print('ON')
 
