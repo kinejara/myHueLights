@@ -1,33 +1,41 @@
 #!/usr/bin/python
 
+import json
 from phue import Bridge
 
 class SimpleHueSwitch:
-  bridge = Bridge('192.168.0.13')
-  bridge.connect()
-  lights = bridge.get_light_objects('id')
+  
+  def getConfigs(self):
+    with open('config.json') as data_file:    
+      data = json.load(data_file)
+    return data
 
-  def lightsOn(self):
-    if self.lights[1].on == True:
+  def lightsOn(self, lights):
+    if lights[1].on == True:
       return True
-    if self.lights[2].on == True:
+    if lights[2].on == True:
       return True
-    if self.lights[3].on == True:
+    if lights[3].on == True:
       return True
-    if self.lights[5].on == True:
+    if lights[5].on == True:
       return True
 
     return False
 
   def __init__(self):
-    self.bridge.connect()
+    config = self.getConfigs()
+    ip_bridge = config["ip_bridge"]
+   
+    bridge = Bridge(ip_bridge)
+    bridge.connect()
+    lights = bridge.get_light_objects('id')
 
     if self.lightsOn() == True:
-      self.bridge.set_light([1,2,3,5], 'on', False)
+      bridge.set_light([1,2,3,5], 'on', False)
       print('OFF')
     else:
-      self.bridge.set_light([3,5], 'on', True)
-      self.bridge.set_light([3,5], 'bri', 50)
+      bridge.set_light([3,5], 'on', True)
+      bridge.set_light([3,5], 'bri', 50)
 
       print('ON')
 
