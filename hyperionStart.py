@@ -2,4 +2,4 @@
 
 import subprocess
 
-subprocess.call('/home/osmc/script/hyperionswitch.sh', shell=True)
+subprocess.call('/home/osmc/myHueLights/hyperionswitch.sh', shell=True)

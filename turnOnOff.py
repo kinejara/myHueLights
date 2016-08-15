@@ -6,7 +6,7 @@ from phue import Bridge
 class SimpleHueSwitch:  
 
   def getConfigs(self):
-    with open('config.json') as data_file:    
+    with open('/home/osmc/myHueLights/config.json') as data_file:    
       data = json.load(data_file)
     return data
 
@@ -29,7 +29,7 @@ class SimpleHueSwitch:
     bridge = Bridge(ip_bridge)
     bridge.connect()
     lights = bridge.get_light_objects('id')
-    
+    print(lights)
     if self.lightsOn(lights) == True:
        bridge.set_light([1,2,3,5], 'on', False)
        print('OFF')
